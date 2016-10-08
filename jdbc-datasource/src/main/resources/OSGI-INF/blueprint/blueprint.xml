@@ -4,17 +4,27 @@ First install the H2 driver using:
 > install -s mvn:com.h2database/h2/1.3.163
 Then copy this file to the deploy folder
 -->
-<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0">
+
+    <cm:property-placeholder persistent-id="WeatherCurrent" update-strategy="reload">
+        <cm:default-properties>
+            <cm:property name="DbDriverClass" value="org.h2.Driver" />
+            <cm:property name="DbConnectionUrl" value="jdbc:h2:~/testdb" />
+            <cm:property name="DbUser" value="sa" />
+            <cm:property name="DbPassword" value="" />
+        </cm:default-properties>
+    </cm:property-placeholder>
+
 
     <bean id="dataSource" class="org.h2.jdbcx.JdbcDataSource">
-        <property name="URL" value="jdbc:h2:mem:test"/>
-        <property name="user" value="sa"/>
-        <property name="password" value=""/>
+        <property name="URL" value="${DbConnectionUrl}"/>
+        <property name="user" value="${DbUser}"/>
+        <property name="password" value="${DbPassword}"/>
     </bean>
 
     <service interface="javax.sql.DataSource" ref="dataSource">
         <service-properties>
-            <entry key="osgi.jndi.service.name" value="jdbc/test"/>
+            <entry key="osgi.jndi.service.name" value="jdbc/testdb"/>
         </service-properties>
     </service>
 </blueprint>
