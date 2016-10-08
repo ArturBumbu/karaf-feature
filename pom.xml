@@ -16,5 +16,6 @@
   </properties>
   <modules>
     <module>jdbc-datasource</module>
+    <module>datasource-consumer</module>
   </modules>
 </project>
