@@ -3,6 +3,8 @@
         <feature>jndi</feature>
         <feature>jdbc</feature>
         <feature>pax-jdbc-config</feature>
+        <feature>transaction</feature>
+        <feature>pax-jdbc-pool-dbcp2</feature>
         <bundle>mvn:${project.groupId}/${project.artifactId}/${project.version}</bundle>
     </feature>
 </features>
