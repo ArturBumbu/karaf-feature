@@ -1,0 +1,9 @@
+<features>
+    <repository>mvn:org.apache.cxf.karaf/apache-cxf/LATEST/xml/features</repository>
+    <feature name="${project.artifactId}">
+        <feature>spring-dm</feature>
+        <feature>http</feature>
+        <feature>cxf</feature>
+        <bundle>mvn:${project.groupId}/${project.artifactId}/${project.version}</bundle>
+    </feature>
+</features>

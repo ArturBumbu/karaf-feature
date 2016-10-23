@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:cxf="http://cxf.apache.org/core"
+       xsi:schemaLocation="
+            http://cxf.apache.org/transports/http/configuration
+            http://cxf.apache.org/schemas/configuration/http-conf.xsd
+            http://cxf.apache.org/jaxws
+            http://cxf.apache.org/schemas/jaxws.xsd
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="helloWebService" class="com.app.WebServiceHelloImpl"/>
+
+    <bean id="myFaultInterceptor" class="com.app.WebServiceHelloImpl"/>
+
+    <jaxws:endpoint
+            implementor="#helloWebService"
+            address="/hello"
+            implementorClass="com.app.WebServiceHelloImpl">
+
+    </jaxws:endpoint>
+
+    <cxf:bus>
+        <cxf:inFaultInterceptors>
+            <bean id="myFaultInterceptor" class="com.app.interceptors.MyInterceptor" />
+        </cxf:inFaultInterceptors>
+    </cxf:bus>
+</beans>

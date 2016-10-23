@@ -1,0 +1,9 @@
+<features>
+    <repository>mvn:org.apache.cxf.karaf/apache-cxf/LATEST/xml/features</repository>
+    <feature name="jaxb-webservice">
+        <feature>spring-dm</feature>
+        <feature>http</feature>
+        <feature>cxf</feature>
+        <bundle>mvn:com.app/jaxb-webservice/1.0-SNAPSHOT</bundle>
+    </feature>
+</features>

@@ -17,5 +17,6 @@
   <modules>
     <module>jdbc-datasource</module>
     <module>datasource-consumer</module>
+    <module>jaxb-webservice</module>
   </modules>
 </project>
